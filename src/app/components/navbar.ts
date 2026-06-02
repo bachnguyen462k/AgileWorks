@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
   imports: [RouterLink, RouterLinkActive],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <header class="w-full z-50 flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto bg-surface-container-low shadow-sm sticky top-0 border-b border-outline-variant/30">
+    <header class="w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-surface-container-low shadow-sm sticky top-0 border-b border-outline-variant/30">
       <div class="flex items-center gap-12 flex-1">
         <a routerLink="/" class="font-headline-md text-headline-md text-primary transition-opacity hover:opacity-80">Agile Works</a>
         @if (!hideSearch) {

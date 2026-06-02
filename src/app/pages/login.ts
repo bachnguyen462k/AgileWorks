@@ -1,20 +1,20 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NavbarComponent } from '../components/navbar';
-import { FooterComponent } from '../components/footer';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent],
+  imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <app-navbar></app-navbar>
-    <main class="bg-surface text-on-surface min-h-[calc(100vh-80px)] flex items-center justify-center py-16 px-margin-mobile md:px-margin-desktop">
+    <main class="bg-surface text-on-surface min-h-screen flex items-center justify-center py-16 px-margin-mobile md:px-margin-desktop">
         <div class="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
           <!-- Left Side -->
           <div class="hidden md:flex md:col-span-6 flex-col gap-8 pr-8">
             <div class="space-y-4">
+              <a routerLink="/" class="inline-block font-display-md text-display-md text-primary font-bold tracking-tight hover:opacity-80 transition-opacity">
+                Agile Works
+              </a>
               <h1 class="font-display-md text-display-md text-primary leading-tight">Nâng tầm quản trị dự án với sự linh hoạt tối đa.</h1>
               <p class="font-body-lg text-body-lg text-on-surface-variant">Tham gia cùng hàng nghìn chuyên gia để tối ưu hóa quy trình làm việc và thúc đẩy hiệu suất nhóm của bạn.</p>
             </div>
@@ -35,6 +35,15 @@ import { FooterComponent } from '../components/footer';
           <!-- Right Side: Login Form -->
           <div class="md:col-span-6 flex justify-center">
             <div class="w-full max-w-[480px] bg-surface-container-lowest p-10 rounded-xl shadow-[0_8px_30px_rgb(0,58,52,0.08)] border border-outline-variant">
+              <div class="flex justify-between items-center mb-8">
+                <a routerLink="/" class="md:hidden inline-block font-display-md text-display-md text-primary font-bold tracking-tight hover:opacity-80 transition-opacity">
+                  Agile Works
+                </a>
+                <a routerLink="/" class="inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+                  <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                  Trang chủ
+                </a>
+              </div>
               <div class="text-center mb-8">
                 <h2 class="font-headline-lg text-headline-lg text-primary mb-2">Chào mừng trở lại</h2>
                 <p class="font-body-md text-body-md text-on-surface-variant">Vui lòng nhập thông tin để truy cập hệ thống</p>
@@ -67,6 +76,10 @@ import { FooterComponent } from '../components/footer';
                   Đăng nhập
                 </button>
 
+                <div class="text-center pt-2">
+                  <p class="font-body-md text-on-surface-variant">Chưa có tài khoản? <a routerLink="/register" class="font-bold text-on-surface hover:text-primary cursor-pointer transition-colors">Đăng ký ngay</a></p>
+                </div>
+
                 <!-- Divider -->
                 <div class="relative py-4">
                   <div class="absolute inset-0 flex items-center">
@@ -93,7 +106,6 @@ import { FooterComponent } from '../components/footer';
           </div>
         </div>
       </main>
-      <app-footer></app-footer>
   `
 })
 export class LoginComponent {

@@ -18,7 +18,7 @@ import { FooterComponent } from '../components/footer';
           <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
           <div class="relative">
             <div class="w-40 h-40 rounded-xl overflow-hidden shadow-lg border-4 border-white">
-              <img class="w-full h-full object-cover" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnIsfrZtzDrCYztZKQsv_iBw0n5PjBjxvywUwUPX5e6kNo2l1rsIDRmpxqI02tglw7eNUz-YLcZYCbdZMqWH_GLOzrHzPhwzA47svbhbfrrM6mKi6BLNETa9oOO38AJWCFfA8BX8F_5uSmCaJteIEIHND3XFT2vkbefo5zGVznIhaQXf1bM4PWcWYSuB3lUC25d9Q_uqpRXSYnlPeV1MtadHV9PWE8pMdKlm9DmYWEPyzrd7oKBONXewq_hinuEx4IUkdWC-DsKsk"/>
+              <img class="w-full h-full object-cover" alt="Trần Minh Tâm" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnIsfrZtzDrCYztZKQsv_iBw0n5PjBjxvywUwUPX5e6kNo2l1rsIDRmpxqI02tglw7eNUz-YLcZYCbdZMqWH_GLOzrHzPhwzA47svbhbfrrM6mKi6BLNETa9oOO38AJWCFfA8BX8F_5uSmCaJteIEIHND3XFT2vkbefo5zGVznIhaQXf1bM4PWcWYSuB3lUC25d9Q_uqpRXSYnlPeV1MtadHV9PWE8pMdKlm9DmYWEPyzrd7oKBONXewq_hinuEx4IUkdWC-DsKsk"/>
             </div>
             <div class="absolute -bottom-2 -right-2 bg-secondary text-white p-1 rounded-full flex items-center justify-center border-2 border-white">
               <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
@@ -109,7 +109,7 @@ import { FooterComponent } from '../components/footer';
               <!-- Project Card 1 -->
               <div class="bg-surface-container-lowest rounded-xl border border-surface-container-highest overflow-hidden hover:shadow-md transition-all group cursor-pointer" routerLink="/jobs/1">
                 <div class="h-40 bg-surface-container-high relative overflow-hidden">
-                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzSMpoKF2QFOTrehGGshIi4XCmwGpHIrQ4tv91PlT0I7qOaHD-ZMbbFgFMcSI3-p7CE38r8WIhlV3W-MlDZKUUR28SJEeZ_0Qd3QQA_wxALeTb2JVsPtB5xb59gkGKLkgBZ1sn3feVRYC1KDv84Oin2MSnec26WgNUmZXCyxJ7uRtHJQFHmMNcPntfHaMCYnNSLkLurSAIXtRHnam6deVticUA7JdrdQ91MaVXhlnevvj_jRbvEPq5LpiBD0r0jWGxgT3Ucgced0"/>
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Cửa gỗ đình làng" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzSMpoKF2QFOTrehGGshIi4XCmwGpHIrQ4tv91PlT0I7qOaHD-ZMbbFgFMcSI3-p7CE38r8WIhlV3W-MlDZKUUR28SJEeZ_0Qd3QQA_wxALeTb2JVsPtB5xb59gkGKLkgBZ1sn3feVRYC1KDv84Oin2MSnec26WgNUmZXCyxJ7uRtHJQFHmMNcPntfHaMCYnNSLkLurSAIXtRHnam6deVticUA7JdrdQ91MaVXhlnevvj_jRbvEPq5LpiBD0r0jWGxgT3Ucgced0"/>
                   <div class="absolute top-4 right-4 bg-surface-container-lowest/90 px-3 py-1 rounded-full font-label-sm text-label-sm text-secondary shadow-sm">Tháng 08, 2023</div>
                 </div>
                 <div class="p-6 space-y-3">
@@ -129,7 +129,7 @@ import { FooterComponent } from '../components/footer';
               <!-- Project Card 2 -->
               <div class="bg-surface-container-lowest rounded-xl border border-surface-container-highest overflow-hidden hover:shadow-md transition-all group cursor-pointer">
                 <div class="h-40 bg-surface-container-high relative overflow-hidden">
-                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1W81OICVOUUCyT_uKqntLO-jSxYKsCPDO-i1ppZlQ7yuog61Q52mc-ZC2D6P9pZfUbsiAgoV2MBAxGl20TA3IxhPS_qaHcofRujhKiyjZT5Z4JGqpNEk6g6TNv_1b2yc3kAFBrzM74sw8z5N3I1fADDxt-pthlwZnN2U7ohqYfvKi00JTD4ElyZYx1cbkaKYQ5QaBoalpadJOfJzvXJhJOFhbpyw-FLxNKUpN84oDiiv2nMzkbZavoj1OlVb5jCve4KEWu9sFcbQ"/>
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Tủ thờ khảm xà cừ" referrerpolicy="no-referrer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1W81OICVOUUCyT_uKqntLO-jSxYKsCPDO-i1ppZlQ7yuog61Q52mc-ZC2D6P9pZfUbsiAgoV2MBAxGl20TA3IxhPS_qaHcofRujhKiyjZT5Z4JGqpNEk6g6TNv_1b2yc3kAFBrzM74sw8z5N3I1fADDxt-pthlwZnN2U7ohqYfvKi00JTD4ElyZYx1cbkaKYQ5QaBoalpadJOfJzvXJhJOFhbpyw-FLxNKUpN84oDiiv2nMzkbZavoj1OlVb5jCve4KEWu9sFcbQ"/>
                   <div class="absolute top-4 right-4 bg-surface-container-lowest/90 px-3 py-1 rounded-full font-label-sm text-label-sm text-secondary shadow-sm">Tháng 05, 2023</div>
                 </div>
                 <div class="p-6 space-y-3">
