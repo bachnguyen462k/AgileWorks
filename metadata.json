@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Agile Works",
+  "description": "Nền tảng kết nối và quản lý dự án linh hoạt cho các chuyên gia và đối tác.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

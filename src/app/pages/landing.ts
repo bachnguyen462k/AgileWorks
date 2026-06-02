@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NavbarComponent } from '../components/navbar';
 import { FooterComponent } from '../components/footer';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -155,7 +156,14 @@ import { RouterLink } from '@angular/router';
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                @if (authService.isLoggedIn()) {
+                  <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                } @else {
+                  <a routerLink="/login" class="flex-1 bg-secondary/10 text-secondary border border-secondary/20 py-2.5 rounded-lg font-label-md hover:bg-secondary/20 transition-colors cursor-pointer text-center flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">lock</span>
+                    Yêu cầu đăng nhập
+                  </a>
+                }
                 <button routerLink="/jobs/1" class="px-3 py-2.5 border border-outline-variant rounded-lg text-primary hover:bg-surface-container transition-colors cursor-pointer flex items-center justify-center">
                   <span class="material-symbols-outlined text-xl leading-none">visibility</span>
                 </button>
@@ -182,7 +190,14 @@ import { RouterLink } from '@angular/router';
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                @if (authService.isLoggedIn()) {
+                  <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                } @else {
+                  <a routerLink="/login" class="flex-1 bg-secondary/10 text-secondary border border-secondary/20 py-2.5 rounded-lg font-label-md hover:bg-secondary/20 transition-colors cursor-pointer text-center flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">lock</span>
+                    Yêu cầu đăng nhập
+                  </a>
+                }
                 <button routerLink="/jobs/2" class="px-3 py-2.5 border border-outline-variant rounded-lg text-primary hover:bg-surface-container transition-colors cursor-pointer flex items-center justify-center">
                   <span class="material-symbols-outlined text-xl leading-none">visibility</span>
                 </button>
@@ -209,7 +224,14 @@ import { RouterLink } from '@angular/router';
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                @if (authService.isLoggedIn()) {
+                  <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                } @else {
+                  <a routerLink="/login" class="flex-1 bg-secondary/10 text-secondary border border-secondary/20 py-2.5 rounded-lg font-label-md hover:bg-secondary/20 transition-colors cursor-pointer text-center flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">lock</span>
+                    Yêu cầu đăng nhập
+                  </a>
+                }
                 <button routerLink="/jobs/3" class="px-3 py-2.5 border border-outline-variant rounded-lg text-primary hover:bg-surface-container transition-colors cursor-pointer flex items-center justify-center">
                   <span class="material-symbols-outlined text-xl leading-none">visibility</span>
                 </button>
@@ -236,7 +258,14 @@ import { RouterLink } from '@angular/router';
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                @if (authService.isLoggedIn()) {
+                  <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                } @else {
+                  <a routerLink="/login" class="flex-1 bg-secondary/10 text-secondary border border-secondary/20 py-2.5 rounded-lg font-label-md hover:bg-secondary/20 transition-colors cursor-pointer text-center flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">lock</span>
+                    Yêu cầu đăng nhập
+                  </a>
+                }
                 <button routerLink="/jobs/4" class="px-3 py-2.5 border border-outline-variant rounded-lg text-primary hover:bg-surface-container transition-colors cursor-pointer flex items-center justify-center">
                   <span class="material-symbols-outlined text-xl leading-none">visibility</span>
                 </button>
@@ -263,7 +292,14 @@ import { RouterLink } from '@angular/router';
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                @if (authService.isLoggedIn()) {
+                  <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                } @else {
+                  <a routerLink="/login" class="flex-1 bg-secondary/10 text-secondary border border-secondary/20 py-2.5 rounded-lg font-label-md hover:bg-secondary/20 transition-colors cursor-pointer text-center flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">lock</span>
+                    Yêu cầu đăng nhập
+                  </a>
+                }
                 <button routerLink="/jobs/5" class="px-3 py-2.5 border border-outline-variant rounded-lg text-primary hover:bg-surface-container transition-colors cursor-pointer flex items-center justify-center">
                   <span class="material-symbols-outlined text-xl leading-none">visibility</span>
                 </button>
@@ -290,7 +326,14 @@ import { RouterLink } from '@angular/router';
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                @if (authService.isLoggedIn()) {
+                  <button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-md hover:bg-secondary transition-colors cursor-pointer">Ứng tuyển</button>
+                } @else {
+                  <a routerLink="/login" class="flex-1 bg-secondary/10 text-secondary border border-secondary/20 py-2.5 rounded-lg font-label-md hover:bg-secondary/20 transition-colors cursor-pointer text-center flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-[18px]">lock</span>
+                    Yêu cầu đăng nhập
+                  </a>
+                }
                 <button routerLink="/jobs/6" class="px-3 py-2.5 border border-outline-variant rounded-lg text-primary hover:bg-surface-container transition-colors cursor-pointer flex items-center justify-center">
                   <span class="material-symbols-outlined text-xl leading-none">visibility</span>
                 </button>
@@ -485,4 +528,6 @@ import { RouterLink } from '@angular/router';
     <app-footer></app-footer>
   `
 })
-export class LandingComponent {}
+export class LandingComponent {
+  authService = inject(AuthService);
+}

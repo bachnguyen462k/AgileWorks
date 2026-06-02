@@ -1,7 +1,27 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../components/navbar';
 import { FooterComponent } from '../components/footer';
+
+export interface SkillStrength {
+  name: string;
+  score: number;
+  detail: string;
+}
+
+export interface GrowthOpportunity {
+  name: string;
+  detail: string;
+}
+
+export interface AIAssessment {
+  overallRating: string;
+  analysis: string;
+  skillStrengths: SkillStrength[];
+  growthOpportunities: GrowthOpportunity[];
+  projectSuitability: string;
+  aiVerifiedBadge: string;
+}
 
 @Component({
   selector: 'app-profile',
@@ -97,6 +117,141 @@ import { FooterComponent } from '../components/footer';
               <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full font-label-md text-label-md border border-secondary/20">Sơn mài truyền thống</span>
               <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full font-label-md text-label-md border border-secondary/20">Khảm xà cừ</span>
             </div>
+          </div>
+
+          <!-- AI Skill Assessment Section -->
+          <div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm border border-secondary/20 relative overflow-hidden">
+            <!-- Decorative soft background glow -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-2xl"></div>
+            
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6 relative z-10">
+              <h2 class="font-headline-md text-headline-md text-primary flex items-center gap-2.5">
+                <span class="material-symbols-outlined text-secondary font-bold">psychology</span>
+                Đánh giá chuyên môn từ AI
+              </h2>
+              @if (assessmentData()) {
+                <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full font-label-sm text-label-sm flex items-center gap-1.5 border border-secondary/20">
+                  <span class="material-symbols-outlined text-[16px]">verified</span>
+                  Đã xác thực bởi AI
+                </span>
+              }
+            </div>
+
+            @if (loadingAssessment()) {
+              <!-- Loading State -->
+              <div class="py-8 flex flex-col items-center justify-center text-center space-y-4">
+                <div class="relative w-16 h-16">
+                  <span class="absolute inset-0 rounded-full border-4 border-secondary/20"></span>
+                  <span class="absolute inset-0 rounded-full border-4 border-secondary border-t-transparent animate-spin"></span>
+                </div>
+                <div class="space-y-1">
+                  <p class="font-title-md text-primary font-bold">Đang phân tích hồ sơ chuyên sâu...</p>
+                  <p class="font-body-sm text-on-surface-variant max-w-md">Mô hình AI đang đối chiếu 15 năm kinh nghiệm mộc mỹ nghệ với hệ thống di sản kiến trúc Việt Nam.</p>
+                </div>
+              </div>
+            } @else if (assessmentData()) {
+              <!-- Report State -->
+              <div class="space-y-6 relative z-10 animate-fade-in">
+                <!-- Top Overview Banner -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 p-6 bg-surface-container-low rounded-xl border border-surface-container-highest">
+                  <div class="md:col-span-4 flex flex-col justify-center items-center text-center md:border-r border-surface-container-highest md:pr-6">
+                    <span class="material-symbols-outlined text-4xl text-secondary mb-2" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                    <span class="font-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Đánh giá chung</span>
+                    <h3 class="font-headline-md text-headline-md text-primary mt-1 font-extrabold text-center">{{ assessmentData()?.overallRating }}</h3>
+                    <div class="mt-2.5 px-3 py-1 bg-secondary text-white rounded-full font-label-xs text-label-xs font-bold">{{ assessmentData()?.aiVerifiedBadge }}</div>
+                  </div>
+                  <div class="md:col-span-8 flex flex-col justify-center">
+                    <h4 class="font-label-md text-primary font-bold mb-1.5 flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[18px]">analytics</span>
+                      Nhận định năng lực:
+                    </h4>
+                    <p class="font-body-md text-on-surface-variant leading-relaxed">{{ assessmentData()?.analysis }}</p>
+                  </div>
+                </div>
+
+                <!-- Strengths / Scores Breakdown -->
+                <div class="space-y-4">
+                  <h4 class="font-label-md text-primary font-bold flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[18px]">verified_user</span>
+                    Chi tiết điểm số & thế mạnh kỹ nghệ:
+                  </h4>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    @for (strength of assessmentData()?.skillStrengths; track strength.name) {
+                      <div class="p-4 bg-surface-container-lowest rounded-xl border border-surface-container-highest space-y-3 shadow-xs">
+                        <div class="flex justify-between items-center">
+                          <span class="font-label-md text-primary font-bold truncate pr-3">{{ strength.name }}</span>
+                          <span class="font-label-md text-secondary font-bold">{{ strength.score }}%</span>
+                        </div>
+                        <!-- Progress bar -->
+                        <div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+                          <div class="h-full bg-secondary rounded-full transition-all duration-500" [style.width.%]="strength.score"></div>
+                        </div>
+                        <p class="font-body-sm text-on-surface-variant leading-normal">{{ strength.detail }}</p>
+                      </div>
+                    }
+                  </div>
+                </div>
+
+                <!-- Opportunities & Suitability Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                  <!-- Match Recommendations -->
+                  <div class="p-5 bg-surface-container-lowest border border-surface-container-highest rounded-xl space-y-3">
+                    <h4 class="font-label-md text-primary font-bold flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-secondary text-[20px]">assignment_turned_in</span>
+                      Dự án phù hợp tối ưu:
+                    </h4>
+                    <p class="font-body-md text-on-surface-variant leading-relaxed">{{ assessmentData()?.projectSuitability }}</p>
+                  </div>
+
+                  <!-- Growth & Learning Plan -->
+                  <div class="p-5 bg-surface-container-lowest border border-surface-container-highest rounded-xl space-y-3">
+                    <h4 class="font-label-md text-primary font-bold flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-primary text-[20px]">trending_up</span>
+                      Đề xuất phát triển chuyên sâu:
+                    </h4>
+                    <ul class="space-y-2.5">
+                      @for (item of assessmentData()?.growthOpportunities; track item.name) {
+                        <li class="flex items-start gap-2 text-on-surface-variant font-body-sm">
+                          <span class="material-symbols-outlined text-secondary text-[16px] mt-0.5" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                          <div>
+                            <span class="font-bold text-primary">{{ item.name }}:</span> {{ item.detail }}
+                          </div>
+                        </li>
+                      }
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Re-analyze button -->
+                <div class="pt-4 flex justify-end border-t border-surface-container-highest">
+                  <button 
+                    (click)="generateAIEvaluation()"
+                    class="px-5 py-2.5 bg-surface-container-high hover:bg-surface-container text-primary rounded-lg font-label-md text-label-md transition-colors cursor-pointer flex items-center gap-1.5 border border-outline-variant/30"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">sync</span>
+                    Cập nhật phân tích AI
+                  </button>
+                </div>
+              </div>
+            } @else {
+              <!-- Empty State / CTAs -->
+              <div class="py-10 px-6 flex flex-col items-center text-center space-y-5 relative z-10">
+                <div class="p-4 bg-secondary/10 text-secondary rounded-full">
+                  <span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                </div>
+                <div class="space-y-1.5 max-w-xl">
+                  <h3 class="font-title-lg text-title-lg text-primary font-bold">Kiểm định hồ sơ bằng AI</h3>
+                  <p class="font-body-md text-on-surface-variant font-medium">Tận dụng mô hình AI của Agile Works để chấm điểm năng lực kỹ nghệ, tìm kiếm thế mạnh độc bản và định hướng dự án kiến trúc phù hợp với Trần Minh Tâm.</p>
+                </div>
+                <button 
+                  (click)="generateAIEvaluation()"
+                  class="px-8 py-3 bg-secondary hover:bg-secondary-fixed-variant text-white font-label-md text-label-md rounded-xl transition-all shadow-md hover:shadow-secondary/20 flex items-center gap-2 cursor-pointer active:scale-98"
+                >
+                  <span class="material-symbols-outlined text-[20px]">assistant</span>
+                  Bắt đầu phân tích ngay bằng AI
+                </button>
+              </div>
+            }
           </div>
 
           <!-- Project History -->
@@ -204,4 +359,36 @@ import { FooterComponent } from '../components/footer';
     <app-footer></app-footer>
   `
 })
-export class ProfileComponent {}
+export class ProfileComponent {
+  assessmentData = signal<AIAssessment | null>(null);
+  loadingAssessment = signal<boolean>(false);
+
+  async generateAIEvaluation() {
+    this.loadingAssessment.set(true);
+    try {
+      const profileData = {
+        name: "Trần Minh Tâm",
+        bio: "Với hơn 15 năm kinh nghiệm trong lĩnh vực bảo tồn di sản và chế tác gỗ mỹ nghệ, tôi luôn tâm niệm mỗi sản phẩm là một câu chuyện lịch sử. Tôi chuyên sâu về phục hồi kiến trúc cổ truyền Việt Nam, từ đình làng đến nhà rường cổ, kết hợp giữa kỹ thuật truyền thống và tư duy thiết kế hiện đại.",
+        skills: ["Phục hồi kiến trúc", "Chế tác gỗ", "Tư vấn thiết kế", "Bảo tồn di sản", "Sơn mài truyền thống", "Khảm xà cừ"],
+        completedJobs: [
+          { title: "Phục hồi cửa gỗ đình làng", score: 5.0, feedback: "Anh Tâm làm việc cực kỳ chuyên nghiệp và am hiểu sâu sắc về văn hóa tâm linh Việt Nam qua từng nét chạm trổ..." },
+          { title: "Chế tác tủ thờ khảm xà cừ", score: 4.8, feedback: "Sản phẩm hoàn thiện vượt mong đợi, tinh xảo đến từng chi tiết nhỏ nhất. Giá cả hoàn toàn xứng đáng với chất lượng." }
+        ]
+      };
+      const res = await fetch('/api/profile/ai-assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profileData)
+      });
+      if (!res.ok) {
+        throw new Error('Đường truyền mạng hoặc máy chủ gặp sự cố');
+      }
+      const data = await res.json();
+      this.assessmentData.set(data);
+    } catch (err) {
+      console.error("Lỗi tạo đánh giá từ AI: ", err);
+    } finally {
+      this.loadingAssessment.set(false);
+    }
+  }
+}
